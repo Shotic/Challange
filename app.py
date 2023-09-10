@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 
 #asset
-img_contact_f = Image.open("C:/Users/Jacob/Desktop/New/new/image/seth.jpg")
+img_contact_f = Image.open("image/seth.jpg")
 
 st.title("Seth Eli J Bangar")
 
