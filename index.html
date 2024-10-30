@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jumpscare Website</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        background-color: #ff0000;
+        color: white;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background-color: #cc0000;
+      }
+      .jumpscare {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+      img {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 10px; /* Optional: round the corners of the image */
+      }
+      #message {
+        display: none;
+        font-size: 24px;
+        margin-top: 20px;
+        animation: fadeIn 2s; /* Optional: add fade-in effect */
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Are You Brave Enough?</h1>
+      <button id="jumpButton">Click Me!</button>
+      <div class="jumpscare" id="jumpscareDiv">
+        <img src="scary-image.jpg" alt="Scary Image" />
+        <div id="message">Stare at it for 1 minute</div>
+      </div>
+      <audio id="jumpscareSound" src="jumpscare-sound.mp3"></audio>
+    </div>
+
+    <script>
+      document.getElementById("jumpButton").onclick = function () {
+        // Show the jumpscare image and message
+        document.getElementById("jumpscareDiv").style.display = "block";
+        document.getElementById("message").style.display = "block";
+
+        // Play the jumpscare sound
+        var sound = document.getElementById("jumpscareSound");
+        sound.play();
+
+        // Enter full screen mode
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+          // Firefox
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          // Chrome, Safari and Opera
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          // IE/Edge
+          document.documentElement.msRequestFullscreen();
+        }
+
+        // Optionally, disable the button after the click
+        this.disabled = true;
+      };
+    </script>
+  </body>
+</html>
